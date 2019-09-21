@@ -4,12 +4,14 @@
 </label>
 
 <table>
-    <ng-container [ngTemplateOutlet]="data ? rowTemplate : null" [ngTemplateOutletContext]="{rows: data}"></ng-container>
+    <ng-container [ngTemplateOutlet]="data ? rowTemplate : emptyTemplate" [ngTemplateOutletContext]="{rows: data}"></ng-container>
 </table>
 
 <ng-template #rowTemplate let-rows="rows">
     <ng-template ngFor let-row [ngForOf]="rows">
         <tr app-row [row]="row" [simulateDataLoading]="simulateDataLoading.checked"></tr>
-        <ng-container [ngTemplateOutlet]="row.showChildRows ? rowTemplate : null" [ngTemplateOutletContext]="{rows: row.childRows}"></ng-container>
+        <ng-container [ngTemplateOutlet]="row.showChildRows ? rowTemplate : emptyTemplate" [ngTemplateOutletContext]="{rows: row.childRows}"></ng-container>
     </ng-template>
 </ng-template>
+
+<ng-template #emptyTemplate></ng-template>
