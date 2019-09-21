@@ -1,0 +1,7 @@
+<td >
+    <button *ngIf="row.childRows && row.childRows.length > 0" (click)="onExpandChildRow()">{{row.showChildRows ? 'Collapse' : 'Expand'}}</button>
+</td>
+<td>{{row.name}}</td>
+<td *ngFor="let col of row.rows">
+    {{col}}
+</td>
