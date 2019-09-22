@@ -1,8 +1,8 @@
-export default class Row {
+export default class TreeGridRow {
 	constructor(
 		public name: string,
 		public cells: string[],
 		public showChildRows: boolean,
-		public childRows: Row[]) {
+		public childRows: TreeGridRow[]) {
 	}
 }

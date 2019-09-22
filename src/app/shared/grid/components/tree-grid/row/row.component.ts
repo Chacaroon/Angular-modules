@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Row from '../models/Row';
+import TreeGridRow from '../models/TreeGridRow';
 
 @Component({
 	selector: 'tr[app-row]',
@@ -7,7 +7,7 @@ import Row from '../models/Row';
 	styleUrls: ['./row.component.scss']
 })
 export class RowComponent implements OnInit {
-	@Input() row: Row;
+	@Input() row: TreeGridRow;
 	@Input() simulateDataLoading: boolean;
 
 	constructor() {

@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import Row from './models/Row';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import TreeGridDataSet from './models/TreeGridDataSet';
 
 @Component({
 	selector: 'app-tree-grid',
@@ -10,12 +10,14 @@ import { map } from 'rxjs/operators';
 })
 export class TreeGridComponent implements OnInit, AfterViewInit {
 
+	@Input()
+	dataSet: TreeGridDataSet;
+
 	@ViewChild('header', {static: false})
 	header: ElementRef;
 	@ViewChild('table', {static: false})
 	table: ElementRef;
 
-	rows: Row[];
 
 	isHeaderPositionFixed: boolean;
 
@@ -23,14 +25,6 @@ export class TreeGridComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit() {
-		this.rows = JSON.parse(
-			`[{"name":"first","cells":["Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum",
-			"Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum"],
-			"childRows":[{"name":"second","cells":[1,2,3]},{"name":"second","cells":[1,2,3]},
-			{"name":"second","cells":[1,2,3]}]},{"name":"first","cells":[1,2,3],"childRows":[{"name":"second","cells":[1,2,3],
-			"childRows":[{"name":"third","cells":[1,2,3],"childRows":[{"name":"fourth","cells":[1,2,3]},{"name":"fourth","cells":[1,2,3]},
-			{"name":"fourth","cells":[1,2,3]}]},{"name":"third","cells":[1,2,3],"childRows":[]}]},{"name":"second","cells":[1,2,3]},
-			{"name":"second","cells":[1,2,3]}]}]`);
 	}
 
 	ngAfterViewInit(): void {
