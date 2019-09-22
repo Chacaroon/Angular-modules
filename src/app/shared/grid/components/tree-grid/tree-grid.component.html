@@ -3,14 +3,40 @@
     <input type="checkbox" #simulateDataLoading>
 </label>
 
-<table>
-    <ng-container [ngTemplateOutlet]="data ? rowTemplate : emptyTemplate" [ngTemplateOutletContext]="{rows: data}"></ng-container>
-</table>
+<div class="grid-container">
+    <table #table>
+        <thead #header>
+        <tr [class.fixed-pos]="isHeaderPositionFixed">
+            <th style="visibility: hidden"></th>
+            <th>Data 1</th>
+            <th>Data 2</th>
+            <th>Data 3</th>
+            <th>Data 4</th>
+            <th>Data 5</th>
+            <th>Data 6</th>
+            <th>Data 7</th>
+            <th>Data 8</th>
+            <th>Data 9</th>
+            <th>Data 10</th>
+            <th>Data 11</th>
+            <th>Data 12</th>
+            <th>Data 13</th>
+            <th>Data 14</th>
+            <th>Data 15</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container [ngTemplateOutlet]="rows ? rowTemplate : emptyTemplate"
+                      [ngTemplateOutletContext]="{rows: rows}"></ng-container>
+        </tbody>
+    </table>
+</div>
 
 <ng-template #rowTemplate let-rows="rows">
     <ng-template ngFor let-row [ngForOf]="rows">
         <tr app-row [row]="row" [simulateDataLoading]="simulateDataLoading.checked"></tr>
-        <ng-container [ngTemplateOutlet]="row.showChildRows ? rowTemplate : emptyTemplate" [ngTemplateOutletContext]="{rows: row.childRows}"></ng-container>
+        <ng-container [ngTemplateOutlet]="row.showChildRows ? rowTemplate : emptyTemplate"
+                      [ngTemplateOutletContext]="{rows: row.childRows}"></ng-container>
     </ng-template>
 </ng-template>
 

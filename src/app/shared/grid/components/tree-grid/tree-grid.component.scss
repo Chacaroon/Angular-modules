@@ -1,0 +1,25 @@
+$first-column-width: 10em;
+
+::ng-deep td, th {
+  white-space: nowrap;
+  min-width: 200px;
+}
+
+tr ::ng-deep :first-child {
+  position: absolute;
+  width: $first-column-width;
+  left: 0;
+  top: auto;
+}
+
+.grid-container {
+  width: 80%;
+  overflow-x: scroll;
+  margin-left: $first-column-width;
+  overflow-y: visible;
+}
+
+.fixed-pos {
+  position: fixed;
+  top: 0;
+}
